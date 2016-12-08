@@ -20,6 +20,9 @@
 
 namespace TechDivision\Import\Product\Variant\Ee\Observers;
 
+use TechDivision\Import\Utils\StoreViewCodes;
+use TechDivision\Import\Product\Utils\MemberNames;
+use TechDivision\Import\Product\Variant\Utils\ColumnKeys;
 use TechDivision\Import\Product\Variant\Observers\VariantObserver;
 
 /**
@@ -51,8 +54,8 @@ class EeVariantObserver extends VariantObserver
         $variationLabel = $row[$headers[ColumnKeys::VARIANT_VARIATION_LABEL]];
 
         // load parent/child IDs
-        $parentId = $this->mapSkuToEntityId($parentSku);
-        $childId = $this->mapSkuToRowId($childSku);
+        $parentId = $this->mapSkuToRowId($parentSku);
+        $childId = $this->mapSkuToEntityId($childSku);
 
         // create the product relation
         $this->persistProductRelation(array($parentId, $childId));
@@ -100,6 +103,6 @@ class EeVariantObserver extends VariantObserver
      */
     public function mapSkuToRowId($sku)
     {
-        return $this->getSubject()->mapSkuToRowId($sku):
+        return $this->getSubject()->mapSkuToRowId($sku);
     }
 }
