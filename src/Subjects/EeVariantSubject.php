@@ -20,6 +20,7 @@
 
 namespace TechDivision\Import\Product\Variant\Ee\Subjects;
 
+use TechDivision\Import\Utils\RegistryKeys;
 use TechDivision\Import\Product\Variant\Subjects\VariantSubject;
 
 /**
@@ -57,7 +58,7 @@ class EeVariantSubject extends VariantSubject
         $status = $registryProcessor->getAttribute($this->serial);
 
         // load the attribute set we've prepared intially
-        $this->skuRowIdMapping = $status['skuRowIdMapping'];
+        $this->skuRowIdMapping = $status[RegistryKeys::SKU_ROW_ID_MAPPING];
 
         // prepare the callbacks
         parent::setUp();
