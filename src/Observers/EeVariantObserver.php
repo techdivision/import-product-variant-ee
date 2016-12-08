@@ -11,86 +11,39 @@
  *
  * PHP version 5
  *
- * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @author    Tim Wagner <t.wagner@techdivision.com>
+ * @copyright 2016 TechDivision GmbH <info@techdivision.com>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link      https://github.com/wagnert/csv-import
- * @link      http://www.appserver.io
+ * @link      https://github.com/techdivision/import-product-variant-ee
+ * @link      http://www.techdivision.com
  */
 
 namespace TechDivision\Import\Product\Variant\Ee\Observers;
 
-use TechDivision\Import\Utils\StoreViewCodes;
-use TechDivision\Import\Product\Utils\MemberNames;
-use TechDivision\Import\Product\Variant\Utils\ColumnKeys;
 use TechDivision\Import\Product\Variant\Observers\VariantObserver;
 
 /**
  * A SLSB that handles the process to import product bunches.
  *
- * @author    Tim Wagner <tw@appserver.io>
- * @copyright 2015 TechDivision GmbH <info@appserver.io>
+ * @author    Tim Wagner <t.wagner@techdivision.com>
+ * @copyright 2016 TechDivision GmbH <info@techdivision.com>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link      https://github.com/wagnert/csv-import
- * @link      http://www.appserver.io
+ * @link      https://github.com/techdivision/import-product-variant-ee
+ * @link      http://www.techdivision.com
  */
 class EeVariantObserver extends VariantObserver
 {
 
     /**
-     * {@inheritDoc}
-     * @see \Importer\Csv\Actions\Listeners\Row\ListenerInterface::handle()
+     * Map's the passed SKU of the parent product to it's PK.
+     *
+     * @param string $parentSku The SKU of the parent product
+     *
+     * @return integer The primary key used to create relations
      */
-    public function handle(array $row)
+    public function mapParentSku($parentSku)
     {
-
-        // load the header information
-        $headers = $this->getHeaders();
-
-        // extract the parent/child ID as well as option value and variation label from the row
-        $parentSku = $row[$headers[ColumnKeys::VARIANT_PARENT_SKU]];
-        $childSku = $row[$headers[ColumnKeys::VARIANT_CHILD_SKU]];
-        $optionValue = $row[$headers[ColumnKeys::VARIANT_OPTION_VALUE]];
-        $variationLabel = $row[$headers[ColumnKeys::VARIANT_VARIATION_LABEL]];
-
-        // load parent/child IDs
-        $parentId = $this->mapSkuToRowId($parentSku);
-        $childId = $this->mapSkuToEntityId($childSku);
-
-        // create the product relation
-        $this->persistProductRelation(array($parentId, $childId));
-        $this->persistProductSuperLink(array($childId, $parentId));
-
-        // load the store ID
-        $store = $this->getStoreByStoreCode($row[$headers[ColumnKeys::STORE_VIEW_CODE]] ?: StoreViewCodes::ADMIN);
-        $storeId = $store[MemberNames::STORE_ID];
-
-        // load the EAV attribute
-        $eavAttribute = $this->getEavAttributeByOptionValueAndStoreId($optionValue, $storeId);
-
-        // query whether or not, the parent ID have changed
-        if (!$this->isParentId($parentId)) {
-            // preserve the parent ID
-            $this->setParentId($parentId);
-
-            // load the attribute ID
-            $attributeId = $eavAttribute[MemberNames::ATTRIBUTE_ID];
-            // if yes, create the super attribute load the ID of the new super attribute
-            $productSuperAttributeId = $this->persistProductSuperAttribute(array($parentId, $attributeId, 0));
-
-            // query whether or not we've to create super attribute labels
-            if (empty($variationLabel)) {
-                $variationLabel = $eavAttribute[MemberNames::FRONTENT_LABEL];
-            }
-
-            // prepare the super attribute label
-            $params = array($productSuperAttributeId, $storeId, 0, $variationLabel);
-            // save the super attribute label
-            $this->persistProductSuperAttributeLabel($params);
-        }
-
-        // returns the row
-        return $row;
+        return $this->mapSkuToRowId($parentSku);
     }
 
     /**
