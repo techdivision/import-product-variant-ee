@@ -1,3 +1,13 @@
+# Version 1.0.0-alpha4
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Make public observer methods protected
+
 # Version 1.0.0-alpha3
 
 ## Bugfixes
