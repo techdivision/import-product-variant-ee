@@ -20,6 +20,10 @@
 
 namespace TechDivision\Import\Product\Variant\Ee\Observers;
 
+use TechDivision\Import\Product\Variant\Utils\ColumnKeys;
+use TechDivision\Import\Product\Variant\Utils\MemberNames;
+use TechDivision\Import\Utils\EntityStatus;
+
 /**
  * Test class for the EE variant observer implementation.
  *
@@ -33,29 +37,92 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * Test's the mapSkuToRowId() method successfull.
+     * Test's the handle() method successfull.
      *
      * @return void
      */
-    public function testMapSkuToRowId()
+    public function testHandle()
     {
 
+        $headers = array(
+            ColumnKeys::VARIANT_PARENT_SKU => 0,
+            ColumnKeys::VARIANT_CHILD_SKU  => 1
+        );
+
+        $row = array(
+            0 => $parentSku = 'TEST-01',
+            1 => $childSku = 'TEST-02'
+        );
+
         // create a persist processor mock instance
-        $mockSubject = $this->getMock('TechDivision\Import\Product\Variant\Ee\Subjects\EeVariantSubject');
-        $mockSubject->expects($this->once())
+        $mockSubject = $this->getMockBuilder('TechDivision\Import\Product\Variant\Ee\Subjects\EeVariantSubject')
+                            ->setMethods(
+                                array(
+                                    'getHeader',
+                                    'hasHeader',
+                                    'getHeaders',
+                                    'isDebugMode',
+                                    'mapSkuToRowId',
+                                    'mapSkuToEntityId',
+                                    'persistProductRelation',
+                                    'persistProductSuperLink'
+                                )
+                            )
+                            ->getMock();
+        $mockSubject->expects($this->any())
                     ->method('mapSkuToRowId')
-                    ->with($sku = 'TEST-01')
+                    ->with($parentSku)
                     ->willReturn($rowId = 1000);
+        $mockSubject->expects($this->any())
+                    ->method('mapSkuToEntityId')
+                    ->with($childSku)
+                    ->willReturn($parentRowId = 1001);
+        $mockSubject->expects($this->any())
+                    ->method('getHeaders')
+                    ->willReturn($headers);
+        $mockSubject->expects($this->any())
+                    ->method('hasHeader')
+                    ->willReturn(true);
+        $mockSubject->expects($this->any())
+                    ->method('isDebugMode')
+                    ->willReturn(false);
+        $mockSubject->expects($this->any())
+                    ->method('getHeader')
+                    ->withConsecutive(
+                        array(ColumnKeys::VARIANT_PARENT_SKU),
+                        array(ColumnKeys::VARIANT_CHILD_SKU)
+                    )
+                    ->willReturnOnConsecutiveCalls(0, 1);
+        $mockSubject->expects($this->once())
+                    ->method('persistProductRelation')
+                    ->with(
+                        array(
+                            EntityStatus::MEMBER_NAME => EntityStatus::STATUS_CREATE,
+                            MemberNames::PARENT_ID => 1000,
+                            MemberNames::CHILD_ID  => 1001
+                        )
+                    )
+                    ->willReturn(null);
+        $mockSubject->expects($this->once())
+                    ->method('persistProductSuperLink')
+                    ->with(
+                        array(
+                            EntityStatus::MEMBER_NAME => EntityStatus::STATUS_CREATE,
+                            MemberNames::PRODUCT_ID => 1001,
+                            MemberNames::PARENT_ID => 1000
+                        )
+                    )
+                    ->willReturn(null);
 
         // create a mock for the EE variant observer
         $mockObserver = $this->getMockBuilder('TechDivision\Import\Product\Variant\Ee\Observers\EeVariantObserver')
-                           ->setMethods(array('getSubject'))
-                           ->getMock();
-                           $mockObserver->expects($this->once())
-                   ->method('getSubject')
-                   ->willReturn($mockSubject);
+                             ->setMethods(array('getSubject'))
+                             ->getMock();
+        $mockObserver->expects($this->any())
+                     ->method('getSubject')
+                     ->willReturn($mockSubject);
 
         // test the mapSkuToRowId() method
-        $this->assertSame($rowId, $mockObserver->mapSkuToRowId($sku));
+        $this->assertSame($row, $mockObserver->handle($row));
     }
 }

@@ -41,7 +41,7 @@ class EeVariantSuperAttributeObserver extends VariantSuperAttributeObserver
      *
      * @return integer The primary key used to create relations
      */
-    public function mapParentSku($parentSku)
+    protected function mapParentSku($parentSku)
     {
         return $this->mapSkuToRowId($parentSku);
     }
@@ -54,7 +54,7 @@ class EeVariantSuperAttributeObserver extends VariantSuperAttributeObserver
      * @return integer The mapped row ID
      * @throws \Exception Is thrown if the SKU is not mapped yet
      */
-    public function mapSkuToRowId($sku)
+    protected function mapSkuToRowId($sku)
     {
         return $this->getSubject()->mapSkuToRowId($sku);
     }
