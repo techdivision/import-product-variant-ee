@@ -26,7 +26,8 @@
 		"psr-4" : {
 			"TechDivision\\Import\\Product\\Variant\\Ee\\" : [
 				"src/",
-				"tests/"
+				"tests/",
+				"symfony/"
 			]
 		}
 	}

@@ -68,15 +68,16 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
                                     'persistProductSuperLink'
                                 )
                             )
+                            ->disableOriginalConstructor()
                             ->getMock();
         $mockSubject->expects($this->any())
                     ->method('mapSkuToRowId')
                     ->with($parentSku)
-                    ->willReturn($rowId = 1000);
+                    ->willReturn(1000);
         $mockSubject->expects($this->any())
                     ->method('mapSkuToEntityId')
                     ->with($childSku)
-                    ->willReturn($parentRowId = 1001);
+                    ->willReturn(1001);
         $mockSubject->expects($this->any())
                     ->method('getHeaders')
                     ->willReturn($headers);
