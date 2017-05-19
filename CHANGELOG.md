@@ -1,3 +1,13 @@
+# Version 1.0.0-beta2
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Update PHPUnit tests
+
 # Version 1.0.0-beta1
 
 ## Bugfixes

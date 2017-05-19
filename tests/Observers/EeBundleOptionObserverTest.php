@@ -65,7 +65,8 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
                                     'mapSkuToRowId',
                                     'mapSkuToEntityId',
                                     'persistProductRelation',
-                                    'persistProductSuperLink'
+                                    'persistProductSuperLink',
+                                    'getRow'
                                 )
                             )
                             ->disableOriginalConstructor()
@@ -81,6 +82,9 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
         $mockSubject->expects($this->any())
                     ->method('getHeaders')
                     ->willReturn($headers);
+        $mockSubject->expects($this->any())
+                    ->method('getRow')
+                    ->willReturn($row);
         $mockSubject->expects($this->any())
                     ->method('hasHeader')
                     ->willReturn(true);
@@ -124,6 +128,6 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
                      ->willReturn($mockSubject);
 
         // test the mapSkuToRowId() method
-        $this->assertSame($row, $mockObserver->handle($row));
+        $this->assertSame($row, $mockObserver->handle($mockSubject));
     }
 }
