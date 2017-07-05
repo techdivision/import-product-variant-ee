@@ -64,8 +64,6 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
                                     'isDebugMode',
                                     'mapSkuToRowId',
                                     'mapSkuToEntityId',
-                                    'persistProductRelation',
-                                    'persistProductSuperLink',
                                     'getRow'
                                 )
                             )
@@ -98,29 +96,35 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
                         array(ColumnKeys::VARIANT_CHILD_SKU)
                     )
                     ->willReturnOnConsecutiveCalls(0, 1);
-        $mockSubject->expects($this->once())
-                    ->method('persistProductRelation')
-                    ->with(
-                        array(
-                            EntityStatus::MEMBER_NAME => EntityStatus::STATUS_CREATE,
-                            MemberNames::PARENT_ID => 1000,
-                            MemberNames::CHILD_ID  => 1001
-                        )
-                    )
-                    ->willReturn(null);
-        $mockSubject->expects($this->once())
-                    ->method('persistProductSuperLink')
-                    ->with(
-                        array(
-                            EntityStatus::MEMBER_NAME => EntityStatus::STATUS_CREATE,
-                            MemberNames::PRODUCT_ID => 1001,
-                            MemberNames::PARENT_ID => 1000
-                        )
-                    )
-                    ->willReturn(null);
+
+        // create a mock variant processor
+        $mockVariantProcessor = $this->getMockBuilder('TechDivision\Import\Product\Variant\Services\ProductVariantProcessorInterface')
+                                     ->setMethods(get_class_methods('TechDivision\Import\Product\Variant\Services\ProductVariantProcessorInterface'))
+                                     ->getMock();
+        $mockVariantProcessor->expects($this->once())
+                             ->method('persistProductRelation')
+                             ->with(
+                                   array(
+                                       EntityStatus::MEMBER_NAME => EntityStatus::STATUS_CREATE,
+                                       MemberNames::PARENT_ID => 1000,
+                                       MemberNames::CHILD_ID  => 1001
+                                   )
+                             )
+                             ->willReturn(null);
+        $mockVariantProcessor->expects($this->once())
+                             ->method('persistProductSuperLink')
+                             ->with(
+                                 array(
+                                     EntityStatus::MEMBER_NAME => EntityStatus::STATUS_CREATE,
+                                     MemberNames::PRODUCT_ID => 1001,
+                                     MemberNames::PARENT_ID => 1000
+                                 )
+                             )
+                             ->willReturn(null);
 
         // create a mock for the EE variant observer
         $mockObserver = $this->getMockBuilder('TechDivision\Import\Product\Variant\Ee\Observers\EeVariantObserver')
+                             ->setConstructorArgs(array($mockVariantProcessor))
                              ->setMethods(array('getSubject'))
                              ->getMock();
         $mockObserver->expects($this->any())

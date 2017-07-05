@@ -5,16 +5,23 @@
 
     <services>
 
-        <service id="import_product_variant_ee.observer.variant" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantObserver"/>
-        <service id="import_product_variant_ee.observer.variant.super.attribute" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperAttributeObserver"/>
-        <service id="import_product_variant_ee.observer.variant.super.attribute.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperAttributeUpdateObserver"/>
-        <service id="import_product_variant_ee.observer.variant.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantUpdateObserver"/>
+        <service id="import_product_variant_ee.observer.variant" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantObserver">
+            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        </service>
+        <service id="import_product_variant_ee.observer.variant.super.attribute" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperAttributeObserver">
+            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        </service>
+        <service id="import_product_variant_ee.observer.variant.super.attribute.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperAttributeUpdateObserver">
+            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        </service>
+        <service id="import_product_variant_ee.observer.variant.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantUpdateObserver">
+            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        </service>
 
         <service id="import_product_variant_ee.subject.variant" class="TechDivision\Import\Product\Variant\Ee\Subjects\EeVariantSubject" shared="false">
             <argument type="service" id="import.processor.registry"/>
             <argument type="service" id="import.generator.core.config.data.uid"/>
             <argument type="service" id="loggers"/>
-            <argument type="service" id="import_product_variant.processor.product.variant"/>
         </service>
 
     </services>
