@@ -1,3 +1,13 @@
+# Version 1.0.0-beta6
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Add additional symofony packages for development purposes
+
 # Version 1.0.0-beta5
 
 ## Bugfixes
