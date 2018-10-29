@@ -4,8 +4,9 @@
     "license": "OSL-3.0",
     "require": {
         "php": ">=5.6.0",
-        "techdivision/import-product-ee": "~1.0",
-        "techdivision/import-product-variant": "~1.0"
+        "techdivision/import-product": "2.x-dev as 1.0.0",
+        "techdivision/import-product-ee": "2.x-dev as 1.0.0",
+        "techdivision/import-product-variant": "2.x-dev as 1.0.0"
     },
     "require-dev": {
         "phpmd/phpmd": "2.5.*",

@@ -102,16 +102,6 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
                                      ->setMethods(get_class_methods('TechDivision\Import\Product\Variant\Services\ProductVariantProcessorInterface'))
                                      ->getMock();
         $mockVariantProcessor->expects($this->once())
-                             ->method('persistProductRelation')
-                             ->with(
-                                   array(
-                                       EntityStatus::MEMBER_NAME => EntityStatus::STATUS_CREATE,
-                                       MemberNames::PARENT_ID => 1000,
-                                       MemberNames::CHILD_ID  => 1001
-                                   )
-                             )
-                             ->willReturn(null);
-        $mockVariantProcessor->expects($this->once())
                              ->method('persistProductSuperLink')
                              ->with(
                                  array(
@@ -123,7 +113,7 @@ class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
                              ->willReturn(null);
 
         // create a mock for the EE variant observer
-        $mockObserver = $this->getMockBuilder('TechDivision\Import\Product\Variant\Ee\Observers\EeVariantObserver')
+        $mockObserver = $this->getMockBuilder('TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperLinkObserver')
                              ->setConstructorArgs(array($mockVariantProcessor))
                              ->setMethods(array('getSubject'))
                              ->getMock();
