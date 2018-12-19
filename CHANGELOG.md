@@ -1,3 +1,13 @@
+# Version 4.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to latest techdivision/import-product + techdivision/import-ee 4.0.* version as dependency
+
 # Version 3.0.0
 
 ## Bugfixes
