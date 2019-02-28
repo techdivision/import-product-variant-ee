@@ -1,3 +1,13 @@
+# Version 7.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 6.0.* and techdivision/import-product-variant 7.0.* version as dependency
+
 # Version 6.0.0
 
 ## Bugfixes
