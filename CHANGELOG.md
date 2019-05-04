@@ -1,3 +1,13 @@
+# Version 10.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 9.0.* and techdivision/import-product-variant 10.0.* version as dependency
+
 # Version 9.0.0
 
 ## Bugfixes
