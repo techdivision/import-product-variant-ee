@@ -1,3 +1,13 @@
+# Version 14.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 13.* and techdivision/import-product-variant 14.* version as dependency
+
 # Version 13.0.0
 
 ## Bugfixes
