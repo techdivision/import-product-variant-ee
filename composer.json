@@ -4,8 +4,11 @@
     "license": "OSL-3.0",
     "require": {
         "php": ">=5.6.0",
-        "techdivision/import-product-ee": "17.*",
-        "techdivision/import-product-variant": "18.*"
+        "techdivision/import": "15.x-dev as 15.0.0",
+        "techdivision/import-ee": "14.x-dev as 14.0.0",
+        "techdivision/import-product": "19.x-dev as 19.0.0",
+        "techdivision/import-product-ee": "18.x-dev as 18.0.0",
+        "techdivision/import-product-variant": "19.x-dev as 19.0.0"
     },
     "require-dev": {
         "doctrine/dbal": "2.5.*",
@@ -15,7 +18,7 @@
         "sebastian/phpcpd": "~3.0.0",
         "squizlabs/php_codesniffer": "3.3.1",
         "consolidation/robo": "~1.0",
-        "mikey179/vfsStream": "~1.0",
+        "mikey179/vfsstream": "~1.0",
         "symfony/http-kernel": "~3.4"
     },
     "authors": [
