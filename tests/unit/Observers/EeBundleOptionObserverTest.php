@@ -20,9 +20,10 @@
 
 namespace TechDivision\Import\Product\Variant\Ee\Observers;
 
+use PHPUnit\Framework\TestCase;
+use TechDivision\Import\Utils\EntityStatus;
 use TechDivision\Import\Product\Variant\Utils\ColumnKeys;
 use TechDivision\Import\Product\Variant\Utils\MemberNames;
-use TechDivision\Import\Utils\EntityStatus;
 
 /**
  * Test class for the EE variant observer implementation.
@@ -33,7 +34,7 @@ use TechDivision\Import\Utils\EntityStatus;
  * @link      https://github.com/techdivision/import-product-media-ee
  * @link      http://www.techdivision.com
  */
-class EeVariantObserverTest extends \PHPUnit_Framework_TestCase
+class EeVariantObserverTest extends TestCase
 {
 
     /**
