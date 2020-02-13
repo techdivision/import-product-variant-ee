@@ -1,3 +1,13 @@
+# Version 20.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 19.*
+
 # Version 19.0.0
 
 ## Bugfixes
