@@ -1,3 +1,13 @@
+# Version 20.0.1
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Extract dev autoloading
+
 # Version 20.0.0
 
 ## Bugfixes
