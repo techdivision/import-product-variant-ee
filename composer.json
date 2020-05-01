@@ -4,11 +4,8 @@
     "license": "OSL-3.0",
     "require": {
         "php": ">=7.1.0",
-        "techdivision/import": "16.x-dev as 15.2.1",
-        "techdivision/import-ee": "15.x-dev as 14.0.1",
-        "techdivision/import-product": "20.x-dev as 19.0.6",
-        "techdivision/import-product-ee": "20.x-dev as 19.0.3",
-        "techdivision/import-product-variant": "20.x-dev as 19.0.1"
+        "techdivision/import-product-ee": "20.*",
+        "techdivision/import-product-variant": "20.*"
     },
     "require-dev": {
         "doctrine/dbal": "2.5.*",
