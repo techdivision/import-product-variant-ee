@@ -72,6 +72,7 @@
             <argument type="service" id="import.generator.core.config.data.uid"/>
             <argument type="service" id="loggers"/>
             <argument type="service" id="import.events.emitter"/>
+            <argument type="service" id="import_product.loader.media.roles"/>
         </service>
 
     </services>

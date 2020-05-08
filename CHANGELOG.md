@@ -1,3 +1,13 @@
+# Version 22.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 21.* and techdivision/import-product-variant 21.* version as dependency
+
 # Version 21.0.0
 
 ## Bugfixes
