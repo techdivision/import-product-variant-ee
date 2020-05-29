@@ -20,10 +20,12 @@
         <service id="import_product_variant_ee.observer.variant.super.attribute" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperAttributeObserver">
             <argument type="service" id="import_product_variant.processor.product.variant"/>
             <argument type="service" id="import.observer.dynamic.attribute.loader"/>
+            <argument type="service" id="import_product_variant.entity.merger.collection.super.attribute"/>
         </service>
         <service id="import_product_variant_ee.observer.variant.super.attribute.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperAttributeUpdateObserver">
             <argument type="service" id="import_product_variant.processor.product.variant"/>
             <argument type="service" id="import.observer.dynamic.attribute.loader"/>
+            <argument type="service" id="import_product_variant.entity.merger.collection.super.attribute"/>
         </service>
         <service id="import_product_variant_ee.observer.sku.row.id.mapping" class="TechDivision\Import\Product\Ee\Observers\GenericSkuRowIdMappingObserver">
             <argument type="service" id="import_product_ee.processor.product.bunch"/>
