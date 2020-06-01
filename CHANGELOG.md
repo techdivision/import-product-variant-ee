@@ -7,6 +7,8 @@
 ## Features
 
 * Add #PAC-46
+* Add #PAC-47
+* Switch to techdivision/import-product-ee 22.* and techdivision/import-product-variant 22.* version as dependency
 
 # Version 22.0.0
 
