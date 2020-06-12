@@ -77,6 +77,7 @@
             <argument type="service" id="loggers"/>
             <argument type="service" id="import.events.emitter"/>
             <argument type="service" id="import_product.loader.media.roles"/>
+            <argument type="service" id="import_product.utils.entity.type.code.mapping"/>
         </service>
 
     </services>

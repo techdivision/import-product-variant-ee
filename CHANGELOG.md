@@ -1,8 +1,18 @@
+# Version 25.0.1
+
+## Bugfixes
+
+* Fixed invalid subject initialization
+
+## Features
+
+* None
+
 # Version 25.0.0
 
 ## Bugfixes
 
-* Fixed #PAC-130
+* None
 
 ## Features
 
