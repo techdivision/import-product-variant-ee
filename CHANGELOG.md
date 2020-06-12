@@ -1,3 +1,13 @@
+# Version 25.0.0
+
+## Bugfixes
+
+* Fixed #PAC-130
+
+## Features
+
+* Switch to latest techdivision/import-product-ee 24.* and  techdivision/import-product-variant 23.* version as dependency
+
 # Version 24.0.0
 
 ## Bugfixes
