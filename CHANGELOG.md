@@ -1,3 +1,13 @@
+# Version 26.0.0
+
+## Bugfixes
+
+* Switch to latest  techdivision/import-product-ee 25.* and techdivision/import-product-variant 24.* version as dependency
+
+## Features
+
+* None
+
 # Version 25.0.1
 
 ## Bugfixes
