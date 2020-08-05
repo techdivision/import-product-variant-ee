@@ -1,3 +1,277 @@
+# Version 26.0.0
+
+## Bugfixes
+
+* Switch to latest  techdivision/import-product-ee 25.* and techdivision/import-product-variant 24.* version as dependency
+
+## Features
+
+* None
+
+# Version 25.0.1
+
+## Bugfixes
+
+* Fixed invalid subject initialization
+
+## Features
+
+* None
+
+# Version 25.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to latest techdivision/import-product-ee 24.* and  techdivision/import-product-variant 23.* version as dependency
+
+# Version 24.0.0
+
+## Bugfixes
+
+* Fixed #PAC-130
+
+## Features
+
+* Switch to latest techdivision/import-product-ee 23.*
+
+# Version 23.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Add #PAC-46
+* Add #PAC-47
+* Switch to techdivision/import-product-ee 22.* and techdivision/import-product-variant 22.* version as dependency
+
+# Version 22.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 21.* and techdivision/import-product-variant 21.* version as dependency
+
+# Version 21.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 20.* and techdivision/import-product-variant 20.* version as dependency
+
+# Version 20.0.1
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Extract dev autoloading
+
+# Version 20.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 19.*
+
+# Version 19.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 18.* and techdivision/import-product-variant 19.* version as dependency
+
+# Version 18.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 17.* and techdivision/import-product-variant 18.* version as dependency
+
+# Version 17.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 16.* and techdivision/import-product-variant 17.* version as dependency
+
+# Version 16.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 15.* and techdivision/import-product-variant 16.* version as dependency
+
+# Version 15.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Use trait instead of implementing duplicated code from CE bundle subject 
+* Move library specific DI identifiers from techdivision/import-product to thhis library
+* Switch to techdivision/import-product-ee 14.* and techdivision/import-product-variant 15.* version as dependency
+
+# Version 14.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 13.* and techdivision/import-product-variant 14.* version as dependency
+
+# Version 13.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 12.* and techdivision/import-product-variant 13.* version as dependency
+
+# Version 12.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 11.0.* and techdivision/import-product-variant 12.0.* version as dependency
+
+# Version 11.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 10.0.* and techdivision/import-product-variant 11.0.* version as dependency
+
+# Version 10.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 9.0.* and techdivision/import-product-variant 10.0.* version as dependency
+
+# Version 9.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 8.0.* and techdivision/import-product-variant 9.0.* version as dependency
+
+# Version 8.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Added techdivision/import-cli-simple#198
+
+# Version 7.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to techdivision/import-product-ee 6.0.* and techdivision/import-product-variant 7.0.* version as dependency
+
+# Version 6.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to latest techdivision/import-product-variant 6.0.* version as dependency
+
+# Version 5.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to latest techdivision/import-product-bundle + techdivision/import-ee 5.0.* version as dependency
+
+# Version 4.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Switch to latest techdivision/import-product + techdivision/import-ee 4.0.* version as dependency
+
+# Version 3.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Compatibility for Magento 2.3.x
+
+# Version 2.0.0
+
+## Bugfixes
+
+* None
+
+## Features
+
+* Compatibility for Magento 2.2.x
+
 # Version 1.0.0
 
 ## Bugfixes

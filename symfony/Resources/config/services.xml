@@ -5,17 +5,70 @@
 
     <services>
 
-        <service id="import_product_variant_ee.observer.variant" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantObserver">
+        <service id="import_product_variant_ee.observer.variant.super.link" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperLinkObserver">
+            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        </service>
+        <service id="import_product_variant_ee.observer.variant.super.link.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperLinkUpdateObserver">
+            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        </service>
+        <service id="import_product_variant_ee.observer.variant.product.relation" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantProductRelationObserver">
+            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        </service>
+        <service id="import_product_variant_ee.observer.variant.product.relation.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantProductRelationUpdateObserver">
             <argument type="service" id="import_product_variant.processor.product.variant"/>
         </service>
         <service id="import_product_variant_ee.observer.variant.super.attribute" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperAttributeObserver">
             <argument type="service" id="import_product_variant.processor.product.variant"/>
+            <argument type="service" id="import.observer.dynamic.attribute.loader"/>
+            <argument type="service" id="import_product_variant.entity.merger.collection.super.attribute"/>
         </service>
         <service id="import_product_variant_ee.observer.variant.super.attribute.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperAttributeUpdateObserver">
             <argument type="service" id="import_product_variant.processor.product.variant"/>
+            <argument type="service" id="import.observer.dynamic.attribute.loader"/>
+            <argument type="service" id="import_product_variant.entity.merger.collection.super.attribute"/>
         </service>
-        <service id="import_product_variant_ee.observer.variant.update" class="TechDivision\Import\Product\Variant\Ee\Observers\EeVariantUpdateObserver">
-            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        <service id="import_product_variant_ee.observer.sku.row.id.mapping" class="TechDivision\Import\Product\Ee\Observers\GenericSkuRowIdMappingObserver">
+            <argument type="service" id="import_product_ee.processor.product.bunch"/>
+            <argument type="string">%import_product_variant.param.sku.column.name%</argument>
+        </service>
+
+        <!--
+         | The DI configuration for the composite observers of the replace operation.
+         |-->
+        <service id="import_product_variant_ee.observer.composite.replace" class="TechDivision\Import\Observers\GenericCompositeObserver">
+            <call method="addObserver">
+                <argument id="import.observer.attribute.set" type="service"/>
+            </call>
+            <call method="addObserver">
+                <argument id="import_product_variant_ee.observer.variant.super.link" type="service"/>
+            </call>
+            <call method="addObserver">
+                <argument id="import_product_variant_ee.observer.variant.super.attribute" type="service"/>
+            </call>
+            <call method="addObserver">
+                <argument id="import_product_variant_ee.observer.variant.product.relation" type="service"/>
+            </call>
+        </service>
+
+        <!--
+         | The DI configuration for the composite observers of the add-update operation.
+         |-->
+        <service id="import_product_variant_ee.observer.composite.add_update" class="TechDivision\Import\Observers\GenericCompositeObserver">
+            <call method="addObserver">
+                <argument id="import_product_variant_ee.observer.sku.row.id.mapping" type="service"/>
+            </call>
+            <call method="addObserver">
+                <argument id="import.observer.attribute.set" type="service"/>
+            </call>
+            <call method="addObserver">
+                <argument id="import_product_variant_ee.observer.variant.super.link.update" type="service"/>
+            </call>
+            <call method="addObserver">
+                <argument id="import_product_variant_ee.observer.variant.super.attribute.update" type="service"/>
+            </call>
+            <call method="addObserver">
+                <argument id="import_product_variant_ee.observer.variant.product.relation.update" type="service"/>
+            </call>
         </service>
 
         <service id="import_product_variant_ee.subject.variant" class="TechDivision\Import\Product\Variant\Ee\Subjects\EeVariantSubject" shared="false">
@@ -23,6 +76,8 @@
             <argument type="service" id="import.generator.core.config.data.uid"/>
             <argument type="service" id="loggers"/>
             <argument type="service" id="import.events.emitter"/>
+            <argument type="service" id="import_product.loader.media.roles"/>
+            <argument type="service" id="import_product.utils.entity.type.code.mapping"/>
         </service>
 
     </services>

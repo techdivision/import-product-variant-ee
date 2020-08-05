@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TechDivision\Import\Product\Variant\Ee\Observers\EeVariantUpdateObserver
+ * TechDivision\Import\Product\Variant\Ee\Observers\EeVariantProductRelationObserver
  *
  * NOTICE OF LICENSE
  *
@@ -20,7 +20,7 @@
 
 namespace TechDivision\Import\Product\Variant\Ee\Observers;
 
-use TechDivision\Import\Product\Variant\Observers\VariantUpdateObserver;
+use TechDivision\Import\Product\Variant\Observers\VariantProductRelationObserver;
 
 /**
  * Observer that provides extended mapping functionality to map a SKU to a row ID (EE Feature).
@@ -31,20 +31,8 @@ use TechDivision\Import\Product\Variant\Observers\VariantUpdateObserver;
  * @link      https://github.com/techdivision/import-product-variant-ee
  * @link      http://www.techdivision.com
  */
-class EeVariantUpdateObserver extends VariantUpdateObserver
+class EeVariantProductRelationObserver extends VariantProductRelationObserver
 {
-
-    /**
-     * Map's the passed SKU of the parent product to it's PK.
-     *
-     * @param string $parentSku The SKU of the parent product
-     *
-     * @return integer The primary key used to create relations
-     */
-    protected function mapParentSku($parentSku)
-    {
-        return $this->mapSkuToRowId($parentSku);
-    }
 
     /**
      * Return the row ID for the passed SKU.
@@ -54,7 +42,7 @@ class EeVariantUpdateObserver extends VariantUpdateObserver
      * @return integer The mapped row ID
      * @throws \Exception Is thrown if the SKU is not mapped yet
      */
-    protected function mapSkuToRowId($sku)
+    protected function mapSku($sku)
     {
         return $this->getSubject()->mapSkuToRowId($sku);
     }
