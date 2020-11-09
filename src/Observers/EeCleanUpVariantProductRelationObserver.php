@@ -36,13 +36,22 @@ class EeCleanUpVariantProductRelationObserver extends CleanUpVariantProductRelat
 {
 
     /**
-     * Return's the primary key of the product to load.
+     * Return's the PK to create the product => variant relation.
      *
-     * @param array $product product array like from ProductBunchProcessorInterface::loadProduct
-     * @return integer The primary key of the product
+     * @return integer The PK to create the relation with
      */
-    protected function getPrimaryKey(array $product)
+    protected function getLastPrimaryKey()
     {
-        return isset($product[MemberNames::ROW_ID]) ? $product[MemberNames::ROW_ID] : null;
+        return $this->getLastRowId();
+    }
+
+    /**
+     * Return's the row ID of the product that has been created recently.
+     *
+     * @return string The row Id
+     */
+    protected function getLastRowId()
+    {
+        return $this->getSubject()->getLastRowId();
     }
 }
