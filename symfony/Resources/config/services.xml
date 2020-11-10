@@ -31,6 +31,9 @@
             <argument type="service" id="import_product_ee.processor.product.bunch"/>
             <argument type="string">%import_product_variant.param.sku.column.name%</argument>
         </service>
+        <service id="import_product_variant_ee.observer.clean.up.product.variant" class="TechDivision\Import\Product\Variant\Ee\Observers\EeCleanUpVariantProductRelationObserver">
+            <argument type="service" id="import_product_variant.processor.product.variant"/>
+        </service>
 
         <!--
          | The DI configuration for the composite observers of the replace operation.
