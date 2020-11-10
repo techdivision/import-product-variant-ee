@@ -33,9 +33,7 @@
         </service>
         <service id="import_product_variant_ee.observer.clean.up.product.variant" class="TechDivision\Import\Product\Variant\Ee\Observers\EeCleanUpVariantProductRelationObserver">
             <argument type="service" id="import_product_variant.processor.product.variant"/>
-            <argument type="service" id="import_product_ee.processor.product.bunch"/>
         </service>
-
 
         <!--
          | The DI configuration for the composite observers of the replace operation.
