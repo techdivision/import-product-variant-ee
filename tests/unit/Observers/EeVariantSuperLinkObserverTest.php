@@ -1,7 +1,7 @@
 <?php
 
 /**
- * TechDivision\Import\Product\Variant\Ee\Observers\EeVariantObserverTest
+ * TechDivision\Import\Product\Variant\Ee\Observers\EeVariantSuperLinkObserverTest
  *
  * NOTICE OF LICENSE
  *
@@ -14,7 +14,7 @@
  * @author    Tim Wagner <t.wagner@techdivision.com>
  * @copyright 2016 TechDivision GmbH <info@techdivision.com>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link      https://github.com/techdivision/import-product-media-ee
+ * @link      https://github.com/techdivision/import-product-variant-ee
  * @link      http://www.techdivision.com
  */
 
@@ -31,10 +31,10 @@ use TechDivision\Import\Product\Variant\Utils\MemberNames;
  * @author    Tim Wagner <t.wagner@techdivision.com>
  * @copyright 2016 TechDivision GmbH <info@techdivision.com>
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link      https://github.com/techdivision/import-product-media-ee
+ * @link      https://github.com/techdivision/import-product-variant-ee
  * @link      http://www.techdivision.com
  */
-class EeVariantObserverTest extends TestCase
+class EeVariantSuperLinkObserverTest extends TestCase
 {
 
     /**
