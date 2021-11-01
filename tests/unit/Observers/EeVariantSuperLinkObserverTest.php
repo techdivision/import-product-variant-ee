@@ -15,7 +15,7 @@
 namespace TechDivision\Import\Product\Variant\Ee\Observers;
 
 use PHPUnit\Framework\TestCase;
-use TechDivision\Import\Utils\EntityStatus;
+use TechDivision\Import\Dbal\Utils\EntityStatus;
 use TechDivision\Import\Product\Variant\Utils\ColumnKeys;
 use TechDivision\Import\Product\Variant\Utils\MemberNames;
 

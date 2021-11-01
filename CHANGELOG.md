@@ -6,6 +6,7 @@
 
 ## Features
 
+* Refactoring deprecated classes. see https://github.com/techdivision/import-cli-simple/blob/master/UPGRADE-4.0.0.md
 * Add techdivision/import-product-variant#22
 
 # Version 26.0.0
