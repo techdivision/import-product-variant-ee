@@ -31,6 +31,10 @@
             <argument type="service" id="import_product_ee.processor.product.bunch"/>
             <argument type="string">%import_product_variant.param.sku.column.name%</argument>
         </service>
+        <service id="import_product_variant_ee.observer.parent.sku.row.id.mapping" class="TechDivision\Import\Product\Ee\Observers\GenericSkuRowIdMappingObserver">
+            <argument type="service" id="import_product_ee.processor.product.bunch"/>
+            <argument type="string">%import_product_variant.param.parent.sku.column.name%</argument>
+        </service>
         <service id="import_product_variant_ee.observer.clean.up.product.variant" class="TechDivision\Import\Product\Variant\Ee\Observers\EeCleanUpVariantProductRelationObserver">
             <argument type="service" id="import_product_variant.processor.product.variant"/>
         </service>
@@ -57,6 +61,9 @@
          | The DI configuration for the composite observers of the add-update operation.
          |-->
         <service id="import_product_variant_ee.observer.composite.add_update" class="TechDivision\Import\Observers\GenericCompositeObserver">
+            <call method="addObserver">
+                <argument id="import_product_variant_ee.observer.parent.sku.row.id.mapping" type="service"/>
+            </call>
             <call method="addObserver">
                 <argument id="import_product_variant_ee.observer.sku.row.id.mapping" type="service"/>
             </call>
