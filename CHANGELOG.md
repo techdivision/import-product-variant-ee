@@ -1,3 +1,9 @@
+# Version 27.0.1
+
+## Bugfixes
+
+* Fix php warning undefined array key
+
 # Version 27.0.0
 
 ## Bugfixes
