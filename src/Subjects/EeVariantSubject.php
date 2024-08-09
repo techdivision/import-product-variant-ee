@@ -57,7 +57,7 @@ class EeVariantSubject extends EeBunchSubject
         $status = $registryProcessor->getAttribute(RegistryKeys::STATUS);
 
         // load the SKU => row/entity ID mapping
-        $this->skuRowIdMapping = $status[RegistryKeys::SKU_ROW_ID_MAPPING];
-        $this->skuEntityIdMapping = $status[RegistryKeys::SKU_ENTITY_ID_MAPPING];
+        $this->skuRowIdMapping = $status[RegistryKeys::SKU_ROW_ID_MAPPING] ?? null;
+        $this->skuEntityIdMapping = $status[RegistryKeys::SKU_ENTITY_ID_MAPPING] ?? null;
     }
 }
