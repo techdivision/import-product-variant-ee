@@ -1,3 +1,12 @@
+# Version 28.1.0
+
+## Features
+
+### PHP 8.5 Compatibility
+
+* Update dependencies
+* Remove PHP 8.2 support
+
 # Version 28.0.1
 
 ## Bugfixes
